@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Lab</title>
+  <style>
+    .highlighted {
+      background-color: lightseagreen;
+    }
+    
+  </style>
+</head>
+<body>
+  <h3>Task 1: Capitalize the first letter </h3>
+  <p>Enter any word:</p>
+  <input type="text" id="wordInput" onclick="highlight()" onkeyup="capitalize()">
+  <script>
+    function highlight() {
+      document.getElementById('wordInput').classList.add('highlighted');
+    }
+
+    function capitalize() {
+      let word = document.getElementById('wordInput');
+      let text = word.value;
+      word.value = text.charAt(0).toUpperCase() + text.slice(1);
+    }
+  </script>
+
+  <h3>Task 2: Change the selected option</h3>
+  <p>Select your preferred major from the list:</p>
+  <select id="majorSelect" onchange="displayMajor()">
+    <option value="CS">Computer Science</option>
+    <option value="MS">Medical Science</option>
+    <option value="BA">Business Administration</option>
+    <option value="A&D">Arts & Design</option>
+    <option value="H&S">Health & Sport</option>
+  </select>
+  <p id="majorDisplay"></p>
+  <script>
+    function displayMajor() {
+      let selectedMajor = document.getElementById("majorSelect").value;
+      document.getElementById("majorDisplay").innerText = "You selected: " + selectedMajor;
+    }
+  </script>
+
+<h3>Task 3: Display the current click count</h3>
+<button onclick="incrementClicks()">Click Me</button>
+<input type="text" id="clickCounter" value="0" readonly>
+<script>
+  let clicks = 0;
+
+  function incrementClicks() {
+    clicks++;
+    document.getElementById("clickCounter").value = clicks;
+  }
+</script>
+
+  <h3>Task 4: Is caps lock activated?</h3>
+  <input type="text" id="capsLockCheck" onkeydown="checkCaps()">
+  <p id="capsStatus"></p>
+  <script>
+    function checkCaps() {
+      let capsStatus = event.getModifierState("CapsLock");
+      document.getElementById("capsStatus").innerText = capsStatus ? "Caps Lock Activated" : "Caps Lock Deactivated";
+    }
+  </script>
+
+  <h3>Task 5: Stop the default action</h3>
+  <a href="#" onclick="preventDefault()">Journey to IAU </a>
+  <p id="linkStatus"></p>
+  <script>
+    function preventDefault() {
+      event.preventDefault();
+      document.getElementById("linkStatus").innerText = "Whoa there, seems like you were played";
+    }
+  </script>
+
+  <h3>Task 6: Calling a method to alert a message</h3>
+  <p>Call a method to alert a message when the button is clicked </p>
+  <button onclick="displayAlert()">Generate this dangerous alert!</button>
+  <script>
+    function displayAlert() {
+      alert("never mind, it was a false positive");
+    }
+  </script>
+</body>
+</html>
